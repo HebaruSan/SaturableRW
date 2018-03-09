@@ -17,6 +17,12 @@ Features:
 
 Extract the contents of the **SaturableRW** .zip file and then drop the SaturableRW folder into the GameData folder. **Note:** if you are upgrading then make sure that any previous SaturableRW installation has been completely removed beforehand.
 
+## Credits:
+
+Credits:
+
+* **[Crzyrndm][SRW:contributor-crzyrndm-link]** for creating the RW-Saturatable mod.
+
 ## License
 
 SaturableRW is licensed under a **GNU General Public License**.
@@ -25,7 +31,8 @@ You should have received a copy of the license along with this work. If not, vis
 
 ***
 
-[SRW:gnu-license-link]:     https://www.gnu.org/licenses/gpl-3.0-standalone.html
-[SRW:original-forum-link]:  https://forum.kerbalspaceprogram.com/index.php?showtopic=100094
-[SRW:shield-license]:       https://img.shields.io/badge/License-GPL-green.svg
-[SRW:shield-version]:       https://img.shields.io/badge/KSP%20Version-1.3.1.1891-red.svg
+[SRW:contributor-crzyrndm-link]:    https://github.com/Crzyrndm
+[SRW:gnu-license-link]:             https://www.gnu.org/licenses/gpl-3.0-standalone.html
+[SRW:original-forum-link]:          https://forum.kerbalspaceprogram.com/index.php?showtopic=100094
+[SRW:shield-license]:               https://img.shields.io/badge/License-GPL-green.svg
+[SRW:shield-version]:               https://img.shields.io/badge/KSP%20Version-1.3.1.1891-red.svg
