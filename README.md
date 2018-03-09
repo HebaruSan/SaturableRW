@@ -19,8 +19,6 @@ Extract the contents of the **SaturableRW** .zip file and then drop the Saturabl
 
 ## Credits:
 
-Credits:
-
 * **[Crzyrndm][SRW:contributor-crzyrndm-link]** for creating the RW-Saturatable mod.
 
 ## License
