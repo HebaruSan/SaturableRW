@@ -1,0 +1,34 @@
+//  =======================================================
+//  Enable momentum discharge via resource use.
+//  =======================================================
+
+@PART[*]:HAS[@MODULE[SaturableRW]]:AFTER[SaturableRW]
+{
+    !MODULE[MomentumDischargeThruster],*{}
+
+    MODULE
+    {
+        name = MomentumDischargeThruster
+        thrusterPower = 0.05
+        thrusterTransformName = delete
+
+        PROPELLANT
+        {
+            name = ElectricCharge
+            ratio = 10.0
+        }
+
+        PROPELLANT
+        {
+            name = MonoPropellant
+            ratio = 1.0
+        }
+
+        atmosphereCurve
+        {
+            key = 0 240
+            key = 1 100
+            key = 9 0.001
+        }
+    }
+}
