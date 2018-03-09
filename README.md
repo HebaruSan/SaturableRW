@@ -5,7 +5,7 @@
 
 **SaturableRW** is a mod for **Kerbal Space Program (KSP)** that makes the stock reaction wheels (RWs) more realistic by adding momentum management.
 
-Features:
+**Features:**
 
 * Reaction wheels accumulate momentum with use, torque output is modified based on the current stored momentum.
 * Stored momentum "magically" (ie. no basis in real physics) slowly decays over time, recovering the parts torque capabilities. The rate is configurable in the part configuration files (ie. you can turn it off, decrease the rate, or increase the rate to suit your play style).
