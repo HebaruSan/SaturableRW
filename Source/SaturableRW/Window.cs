@@ -66,7 +66,7 @@ namespace SaturableRW
 
         void DrawWindow (int id)
         {
-            showWindow &= !GUI.Button (new Rect (windowRect.width - 20, 5, 15, 15), "x");
+            showWindow = GUILayout.Toggle (showWindow, "Close", GUI.skin.button);
 
             foreach (KeyValuePair<string, VesselInfo> ves in Vessels)
             {
@@ -107,7 +107,7 @@ namespace SaturableRW
 
                 GUILayout.BeginHorizontal ();
 
-                GUILayout.Space (20);
+                GUILayout.Space (25);
 
                 GUILayout.BeginVertical ();
 
