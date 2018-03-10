@@ -10,7 +10,7 @@
 
             string resourceRates = baseInfo.Substring (index);
 
-            return string.Format ("Thruster used to remove accumulated momentum from a RW\r\n<b>Discharge Rate:</b> {0}% / s\r\n\r\n{1}", (thrusterPower * 100).ToString("0.0"), resourceRates);
+            return string.Format ("Thruster used to remove accumulated momentum from a RW.\r\n<b>Discharge Rate:</b> {0}% / s\r\n\r\n{1}", (thrusterPower * 100).ToString ("0.0"), resourceRates);
         }
 
         public override void OnAwake ()

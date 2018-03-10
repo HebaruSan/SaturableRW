@@ -66,7 +66,7 @@ namespace SaturableRW
 
         void DrawWindow (int id)
         {
-            showWindow &= !GUI.Button (new Rect (windowRect.width - 25, 5, 20, 20), "x");
+            showWindow &= !GUI.Button (new Rect (windowRect.width - 20, 5, 15, 15), "x");
 
             foreach (KeyValuePair<string, VesselInfo> ves in Vessels)
             {

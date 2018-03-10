@@ -422,7 +422,7 @@ namespace SaturableRW
         {
             if (wheelRef.State == ModuleReactionWheel.WheelState.Active && !bConsumeResource)
             {
-                // input torque scale. Available torque gives exponential decay and will always have some torque available (should asymptotically approach bleed rate).
+                // Input torque scale. Available torque gives exponential decay and will always have some torque available (should asymptotically approach bleed rate).
 
                 float rollInput = TimeWarp.fixedDeltaTime * vessel.ctrlState.roll * availableRollTorque;
                 float pitchInput = TimeWarp.fixedDeltaTime * vessel.ctrlState.pitch * availablePitchTorque;
@@ -434,7 +434,7 @@ namespace SaturableRW
                 // yaw == forward vector
                 // pitch == right vector
 
-                if (rollInput.Equals (null))
+                if (!rollInput.Equals (null))
                 {
                     InputMoment (vessel.transform.up, rollInput);
                 }
