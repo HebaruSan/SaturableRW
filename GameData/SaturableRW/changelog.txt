@@ -1,0 +1,15 @@
+=======================================================
+SaturableRW v1.4.1-1 for KSP 1.4.1 (2018-03-14)
+=======================================================
+
+Change Log:
+
+    • Recompiled for KSP 1.4.1
+
+Bug Fixes:
+
+    • None so far.
+
+Known Issues:
+
+    • None so far.

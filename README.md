@@ -27,10 +27,12 @@ SaturableRW is licensed under a **GNU General Public License**.
 
 You should have received a copy of the license along with this work. If not, visit the **[official Free Software Foundation][SRW:gnu-license-link]** page.
 
+**Note that the above license does not cover mod packs. Redistributing this work via a mod pack is not allowed.**
+
 ***
 
 [SRW:contributor-crzyrndm-link]:    https://github.com/Crzyrndm
 [SRW:gnu-license-link]:             https://www.gnu.org/licenses/gpl-3.0-standalone.html
 [SRW:original-forum-link]:          https://forum.kerbalspaceprogram.com/index.php?showtopic=100094
 [SRW:shield-license]:               https://img.shields.io/badge/License-GPL-green.svg
-[SRW:shield-version]:               https://img.shields.io/badge/KSP%20Version-1.3.1.1891-red.svg
+[SRW:shield-version]:               https://img.shields.io/badge/KSP%20Version-1.4.1.2089-red.svg
