@@ -1,4 +1,4 @@
-﻿namespace SaturableRW
+namespace SaturableRW
 {
     public class MomentumDischargeThruster : ModuleRCS
     {

@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace SaturableRW
@@ -11,7 +11,7 @@ namespace SaturableRW
 
         public static Window Instance
         {
-            get 
+            get
             {
                 return instance;
             }
@@ -31,7 +31,7 @@ namespace SaturableRW
         void InitWindow ()
         {
             instance = this;
-            
+
             LoadConfig ();
         }
 
@@ -66,7 +66,7 @@ namespace SaturableRW
 
         void DrawWindow (int id)
         {
-            showWindow &= !GUI.Button (new Rect (windowRect.width - 20, 5, 15, 15), "x");
+            showWindow = GUILayout.Toggle (showWindow, "Close", GUI.skin.button);
 
             foreach (KeyValuePair<string, VesselInfo> ves in Vessels)
             {
@@ -107,7 +107,7 @@ namespace SaturableRW
 
                 GUILayout.BeginHorizontal ();
 
-                GUILayout.Space (20);
+                GUILayout.Space (25);
 
                 GUILayout.BeginVertical ();
 
@@ -160,7 +160,7 @@ namespace SaturableRW
             {
                 return;
             }
-     
+
             GUILayout.Label ("<b>Axis</b>\t<b>Available</b>\t<b>Max</b>");
 
             GUILayout.Label (string.Format ("{0}\t{1:0.0}kN\t{2:0.0}kN", "Pitch", rw.availablePitchTorque, rw.maxPitchTorque));

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -331,13 +331,13 @@ namespace SaturableRW
             if (HighLogic.LoadedSceneIsFlight && FlightGlobals.ready)
             {
                 UseResourcesToRecover ();
-    
+
                 // Update stored momentum.
-    
+
                 UpdateMomentum ();
-    
+
                 // Update module torque outputs.
-    
+
                 UpdateTorque ();
             }
             else
