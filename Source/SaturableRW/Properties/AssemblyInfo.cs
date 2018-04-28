@@ -1,6 +1,5 @@
 using System;
 using System.Reflection;
-using System.Runtime.CompilerServices;
 
 //  General Information about the specified assembly.
 
@@ -19,8 +18,8 @@ using System.Runtime.CompilerServices;
 //    • Build Number
 //    • Revision
 
-[assembly: AssemblyVersion ("1.4.1.2089")]
-[assembly: AssemblyFileVersion ("1.4.1.1")]
+[assembly: AssemblyVersion ("1.4.3.2152")]
+[assembly: AssemblyFileVersion ("1.4.3.1")]
 
 //  The KSPAssembly attribute can be used to ensure that the plugin assemblies
 //  are loaded in the correct order.
