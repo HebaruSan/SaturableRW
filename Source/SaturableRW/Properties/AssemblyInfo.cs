@@ -18,8 +18,9 @@ using System.Reflection;
 //    • Build Number
 //    • Revision
 
-[assembly: AssemblyVersion ("1.4.5.2243")]
-[assembly: AssemblyFileVersion ("1.4.5.1")]
+[assembly: AssemblyVersion ("1.5.1.2335")]
+[assembly: AssemblyFileVersion ("1.5.1.1")]
+[assembly: AssemblyInformationalVersion ("1.5.1.2335")]
 
 //  The KSPAssembly attribute can be used to ensure that the plugin assemblies
 //  are loaded in the correct order.

@@ -1,7 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-# SharpDevelop 5.1
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SaturableRW", "SaturableRW\SaturableRW.csproj", "{84372AB4-AB8A-4021-BDA7-E1E120487315}"
 EndProject
 Global
