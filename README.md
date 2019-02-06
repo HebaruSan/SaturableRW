@@ -35,4 +35,4 @@ You should have received a copy of the license along with this work. If not, vis
 [SRW:gnu-license-link]:             https://www.gnu.org/licenses/gpl-3.0-standalone.html
 [SRW:original-forum-link]:          https://forum.kerbalspaceprogram.com/index.php?showtopic=100094
 [SRW:shield-license]:               https://img.shields.io/badge/License-GPL-green.svg
-[SRW:shield-version]:               https://img.shields.io/badge/KSP%20Version-1.5.1.2335-red.svg
+[SRW:shield-version]:               https://img.shields.io/badge/KSP%20Version-1.6.1.2401-red.svg
