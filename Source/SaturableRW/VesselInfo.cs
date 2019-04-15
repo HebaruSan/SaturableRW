@@ -6,18 +6,33 @@ namespace SaturableRW
 
     public class VesselInfo
     {
-        public Vessel vessel { get; set; }
-        public bool forcedActive { get; set; }
-        public List<SaturableRW> wheels { get; set; }
-        public bool displayVes { get; set; }
+        public Vessel Vessel
+        {
+            get; set;
+        }
+
+        public bool ForcedActive
+        {
+            get; set;
+        }
+
+        public List<SaturableRW> Wheels
+        {
+            get; set;
+        }
+
+        public bool DisplayVes
+        {
+            get; set;
+        }
 
         public VesselInfo (Vessel ves, bool active)
         {
-            vessel = ves;
+            Vessel = ves;
 
-            forcedActive = active;
+            ForcedActive = active;
 
-            wheels = new List<SaturableRW>();
+            Wheels = new List<SaturableRW> ();
         }
     }
 }

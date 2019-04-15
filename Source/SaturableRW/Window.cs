@@ -7,30 +7,27 @@ namespace SaturableRW
 
     class Window : MonoBehaviour
     {
-        static Window instance;
-
         public static Window Instance
         {
-            get
-            {
-                return instance;
-            }
+            get; private set;
         }
 
-        public Dictionary<string, VesselInfo> Vessels = new Dictionary<string, VesselInfo>();
+        public Dictionary<string, VesselInfo> Vessels = new Dictionary<string, VesselInfo> ();
 
         Rect windowRect;
 
         public bool showWindow;
 
+        public readonly Texture2D DischargeLabelIcon = GameDatabase.Instance.GetTexture ("Squad/PartList/SimpleIcons/fuels_monopropellant", false);
+
         void Start ()
         {
-            InitWindow();
+            InitWindow ();
         }
 
         void InitWindow ()
         {
-            instance = this;
+            Instance = this;
 
             LoadConfig ();
         }
@@ -39,19 +36,19 @@ namespace SaturableRW
         {
             if (SaturableRW.config == null)
             {
-                SaturableRW.config = KSP.IO.PluginConfiguration.CreateForType<SaturableRW>();
+                SaturableRW.config = KSP.IO.PluginConfiguration.CreateForType<SaturableRW> ();
             }
 
             SaturableRW.config.load ();
 
             windowRect = SaturableRW.config.GetValue ("windowRect", new Rect (500, 500, 300, 0));
 
-            SaturableRW.config["windowRect"] = windowRect;
+            SaturableRW.config ["windowRect"] = windowRect;
         }
 
         void OnDestroy ()
         {
-            SaturableRW.config["windowRect"] = windowRect;
+            SaturableRW.config ["windowRect"] = windowRect;
 
             SaturableRW.config.save ();
         }
@@ -80,26 +77,26 @@ namespace SaturableRW
         {
             Color backgroundColour = GUI.backgroundColor;
 
-            if (ves.vessel == FlightGlobals.ActiveVessel)
+            if (ves.Vessel == FlightGlobals.ActiveVessel)
             {
                 GUI.backgroundColor = XKCDColors.Green;
             }
 
-            ves.displayVes = GUILayout.Toggle (ves.displayVes, ves.vessel.vesselName, GUI.skin.button);
+            ves.DisplayVes = GUILayout.Toggle (ves.DisplayVes, ves.Vessel.vesselName, GUI.skin.button);
 
             GUI.backgroundColor = backgroundColour;
 
-            if (ves.displayVes)
+            if (ves.DisplayVes)
             {
-                bool state = GUILayout.Toggle (ves.forcedActive, "Toggle Vessel Torque");
+                bool state = GUILayout.Toggle (ves.ForcedActive, "Toggle Vessel Torque");
 
-                if (state != ves.forcedActive)
+                if (state != ves.ForcedActive)
                 {
-                    ves.forcedActive = state;
+                    ves.ForcedActive = state;
 
                     ModuleReactionWheel.WheelState stateToSet = state ? ModuleReactionWheel.WheelState.Active : ModuleReactionWheel.WheelState.Disabled;
 
-                    foreach (SaturableRW rw in ves.wheels)
+                    foreach (SaturableRW rw in ves.Wheels)
                     {
                         rw.wheelRef.State = stateToSet;
                     }
@@ -111,7 +108,9 @@ namespace SaturableRW
 
                 GUILayout.BeginVertical ();
 
-                foreach (SaturableRW rw in ves.wheels)
+                GUILayout.Space (15);
+
+                foreach (SaturableRW rw in ves.Wheels)
                 {
                     DrawWheel (rw);
                 }
@@ -130,7 +129,7 @@ namespace SaturableRW
 
             if (rw.wheelRef.State == ModuleReactionWheel.WheelState.Active)
             {
-                    GUI.backgroundColor = XKCDColors.Green;
+                GUI.backgroundColor = XKCDColors.Green;
             }
 
             bool tmp = GUILayout.Toggle (rw.drawWheel, rw.part.partInfo.title, GUI.skin.button);
@@ -151,7 +150,7 @@ namespace SaturableRW
 
             if (rw.canForceDischarge)
             {
-                rw.bConsumeResource = GUILayout.Toggle (rw.bConsumeResource, "", GUI.skin.button, GUILayout.Width(40));
+                rw.bConsumeResource = GUILayout.Toggle (rw.bConsumeResource, DischargeLabelIcon, GUI.skin.button, GUILayout.Width (40));
             }
 
             GUILayout.EndHorizontal ();
@@ -166,6 +165,8 @@ namespace SaturableRW
             GUILayout.Label (string.Format ("{0}\t{1:0.0}kN\t{2:0.0}kN", "Pitch", rw.availablePitchTorque, rw.maxPitchTorque));
             GUILayout.Label (string.Format ("{0}\t{1:0.0}kN\t{2:0.0}kN", "Yaw", rw.availableYawTorque, rw.maxYawTorque));
             GUILayout.Label (string.Format ("{0}\t{1:0.0}kN\t{2:0.0}kN", "Roll", rw.availableRollTorque, rw.maxRollTorque));
+
+            GUILayout.Space (15);
         }
     }
 }

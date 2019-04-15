@@ -10,7 +10,7 @@ namespace SaturableRW
     {
         /*//////////////////////////////////////////////////////////////////////////////
          * This is not and is never intended to be a realistic representation of how reaction wheels work. That would involve simulating
-         * effects such as gyroscopic stabilisation and precession that are not dependent only on the internal state of the part and current
+         * effects such as gyroscopic stabilization and precession that are not dependent only on the internal state of the part and current
          * command inputs, but the rate of rotation of the vessel and would require applying forces without using the input system.
          *
          * Instead, a reaction wheel is simulated as an arbitrary object in a fixed orientation in space. Momentum is
@@ -50,7 +50,7 @@ namespace SaturableRW
         public float z_Moment;
 
         /// <summary>
-        /// Maximum momentum storable on an axis.
+        /// Maximum momentum that can be stored on an specific axis.
         /// </summary>
 
         public float saturationLimit;
@@ -98,7 +98,7 @@ namespace SaturableRW
         /// Globally scale down output torque
         /// </summary>
 
-        [KSPField (isPersistant = true, guiActiveEditor = true, guiName = "Torque Throttle"), UI_FloatRange(minValue = 0, maxValue = 1, stepIncrement = 0.02f, scene = UI_Scene.Editor)]
+        [KSPField (isPersistant = true, guiActiveEditor = true, guiName = "Torque Throttle"), UI_FloatRange (minValue = 0, maxValue = 1, stepIncrement = 0.02f, scene = UI_Scene.Editor)]
         public float torqueThrottle = 1.0f;
 
         /// <summary>
@@ -112,11 +112,24 @@ namespace SaturableRW
 
         public MomentumDischargeThruster dummyRCS;
 
+        //public ModuleRCS dummyRCS;
+
         public class ResourceConsumer
         {
-            public int ID { get; set; }
-            public double Rate { get; set; }
-            public ResourceFlowMode FlowMode { get; set; }
+            public int ID
+            {
+                get; set;
+            }
+
+            public double Rate
+            {
+                get; set;
+            }
+
+            public ResourceFlowMode FlowMode
+            {
+                get; set;
+            }
 
             public ResourceConsumer (int id, double rate, ResourceFlowMode flowMode)
             {
@@ -148,7 +161,7 @@ namespace SaturableRW
 
         public static KSP.IO.PluginConfiguration config;
 
-        [KSPEvent(guiActive = true, active = true, guiName = "Toggle RW Window")]
+        [KSPEvent (guiActive = true, active = true, guiName = "Toggle RW Window")]
 
         public void ToggleWindow ()
         {
@@ -176,9 +189,9 @@ namespace SaturableRW
                     Window.Instance.Vessels.Remove (vessel.vesselName);
                 }
             }
-            catch (Exception ex)
+            catch (Exception exceptionStack)
             {
-                Debug.Log (ex.StackTrace);
+                Debug.Log ("[SRW]: SaturableRW.OnDestroy() caught an exception: " + exceptionStack.StackTrace);
             }
         }
 
@@ -196,9 +209,9 @@ namespace SaturableRW
                 }
             }
 
-            wheelRef = part.Modules.GetModule<ModuleReactionWheel>();
+            wheelRef = part.Modules.GetModule<ModuleReactionWheel> ();
 
-            // Float curve initialisation.
+            // Float curve initialization.
 
             maxRollTorque = wheelRef.RollTorque;
             maxPitchTorque = wheelRef.PitchTorque;
@@ -220,9 +233,14 @@ namespace SaturableRW
         {
             yield return null;
 
-            dischargeResources = new List<ResourceConsumer>();
+            dischargeResources = new List<ResourceConsumer> ();
 
-            dummyRCS = part.Modules.GetModule<MomentumDischargeThruster>();
+            dummyRCS = part.Modules.GetModule<MomentumDischargeThruster> ();
+
+            /*foreach (Part VesselPart in Part.allParts)
+            {
+                dummyRCS = VesselPart.Modules.GetModule<ModuleRCS> () ?? dummyRCS;
+            }*/
 
             if (dummyRCS != null)
             {
@@ -246,7 +264,7 @@ namespace SaturableRW
                 canForceDischarge |= dischargeResources.Any (rc => rc.Rate > 0);
             }
 
-            for (int i = 0; i < 10; i++)
+            for (int i = 0 ; i < 10 ; i++)
             {
                 yield return null;
             }
@@ -256,14 +274,14 @@ namespace SaturableRW
                 Window.Instance.Vessels.Add (vessel.vesselName, new VesselInfo (vessel, wheelRef.State == ModuleReactionWheel.WheelState.Active));
             }
 
-            Window.Instance.Vessels [vessel.vesselName].wheels.Add (this);
+            Window.Instance.Vessels [vessel.vesselName].Wheels.Add (this);
         }
 
         public void LoadConfig ()
         {
             if (config == null)
             {
-                config = KSP.IO.PluginConfiguration.CreateForType<SaturableRW>();
+                config = KSP.IO.PluginConfiguration.CreateForType<SaturableRW> ();
             }
 
             config.load ();
@@ -284,11 +302,11 @@ namespace SaturableRW
 
             // Save the file so it can be activated by anyone.
 
-            config["DefaultStateIsActive"] = config.GetValue ("DefaultStateIsActive", true);
-            config["DisplayCurrentTorque"] = config.GetValue ("DisplayCurrentTorque", false);
-            config["dischargeTorque"] = config.GetValue ("dischargeTorque", false);
+            config ["DefaultStateIsActive"] = config.GetValue ("DefaultStateIsActive", true);
+            config ["DisplayCurrentTorque"] = config.GetValue ("DisplayCurrentTorque", false);
+            config ["dischargeTorque"] = config.GetValue ("dischargeTorque", false);
 
-            config.save();
+            config.save ();
         }
 
         string info = string.Empty;
@@ -305,9 +323,7 @@ namespace SaturableRW
 
                 // Display min/max bleed rate if there is a difference, otherwise just one value.
 
-                float min, max;
-
-                bleedRate.FindMinMaxValue (out min, out max);
+                bleedRate.FindMinMaxValue (out float min, out float max);
 
                 if (Math.Abs (min - max) < double.Epsilon)
                 {
@@ -362,7 +378,7 @@ namespace SaturableRW
 
             // Reduce the resource consumption if less is removed.
 
-            double resourcePctToRequest = (Math.Abs (x_momentToRemove) + Math.Abs (y_momentToRemove) + Math.Abs(z_momentToRemove)) / (3 * momentumToRemove);
+            double resourcePctToRequest = (Math.Abs (x_momentToRemove) + Math.Abs (y_momentToRemove) + Math.Abs (z_momentToRemove)) / (3 * momentumToRemove);
 
             if (resourcePctToRequest < 0.01)
             {
@@ -378,11 +394,9 @@ namespace SaturableRW
 
             if (dischargeResources.Count > 1)
             {
-                double available, total;
-
                 foreach (ResourceConsumer rc in dischargeResources)
                 {
-                    vessel.resourcePartSet.GetConnectedResourceTotals (rc.ID, out available, out total, true);
+                    vessel.resourcePartSet.GetConnectedResourceTotals (rc.ID, out double available, out double total, true);
 
                     double requestedAmount = rc.Rate * resourcePctToRequest * TimeWarp.fixedDeltaTime;
 
@@ -497,7 +511,7 @@ namespace SaturableRW
 
         float DecayMoment (float moment, Vector3 refAxis)
         {
-            float torqueMag = new Vector3 (Vector3.Dot (vessel.transform.right, refAxis) * maxPitchTorque, Vector3.Dot(vessel.transform.forward, refAxis) * maxYawTorque, Vector3.Dot (vessel.transform.up, refAxis) * maxRollTorque).magnitude;
+            float torqueMag = new Vector3 (Vector3.Dot (vessel.transform.right, refAxis) * maxPitchTorque, Vector3.Dot (vessel.transform.forward, refAxis) * maxYawTorque, Vector3.Dot (vessel.transform.up, refAxis) * maxRollTorque).magnitude;
 
             float decay = torqueMag * (bleedRate.Evaluate (PctSaturation (moment, saturationLimit))) * TimeWarp.fixedDeltaTime;
 
