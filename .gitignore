@@ -1,10 +1,10 @@
 # ==================================================
-# Ignore selected folders and file types from the git
+# Ignore selected folders and file types from the
 # repository.
 # ==================================================
 
-Source/Builds/*
 Source/.vs/*
+Source/Builds/*
 
 *.db
 *.DB

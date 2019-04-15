@@ -15,26 +15,26 @@
 *.CSPROJ    text    eol=lf
 *.md        text    eol=lf
 *.MD        text    eol=lf
-*.sln       text    eol=lf
-*.SLN       text    eol=lf
+*.sln       text    eol=crlf
+*.SLN       text    eol=crlf
 *.txt       text    eol=lf
 *.TXT       text    eol=lf
 *.xml       text    eol=lf
 *.XML       text    eol=lf
 
 # ==================================================
-# Binaries
-# ==================================================
-
-*.dll   binary
-*.DLL   binary
-
-# ==================================================
 # Source code
 # ==================================================
 
-*.cs    diff=csharp
-*.CS    diff=csharp
+*.cs        text    eol=lf  diff=csharp
+*.CS        text    eol=lf  diff=csharp
+
+# ==================================================
+# Assemblies and database files.
+# ==================================================
+
+*.dll       binary
+*.DLL       binary
 
 # ==================================================
 # Ignore list
