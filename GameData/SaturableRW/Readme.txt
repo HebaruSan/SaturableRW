@@ -10,7 +10,7 @@ Features:
 
     • Reaction wheels accumulate momentum with use, torque output is modified based on the current stored momentum.
     • Stored momentum "magically" (i.e. no basis in real physics) slowly decays over time, recovering the parts torque capabilities. The rate is configurable in the part configuration files (i.e. you can turn it off, decrease the rate, or increase the rate to suit your play style).
-    • Stored momentum can also be discharged at the expense of propellant (not enabled by default, change the file extension of "ResourceDrain.txt" file to ".cfg" to enable it).
+    • Stored momentum can also be discharged at the expense of propellant (this feature is not enabled by default, you will have to change the file extension of the "SRW_ResourceDrain_Config" file from ".txt" to ".cfg" to enable it).
 
 Installation:
 

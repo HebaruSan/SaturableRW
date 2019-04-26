@@ -9,7 +9,7 @@
 
 * Reaction wheels accumulate momentum with use, torque output is modified based on the current stored momentum.
 * Stored momentum "magically" (ie. no basis in real physics) slowly decays over time, recovering the parts torque capabilities. The rate is configurable in the part configuration files (ie. you can turn it off, decrease the rate, or increase the rate to suit your play style).
-* Stored momentum can also be discharged at the expense of propellant. Not enabled by default, change the file extension of ResourceDrain.txt to .cfg to enable.
+* Stored momentum can also be discharged at the expense of propellant (this feature is not enabled by default, you will have to change the file extension of the **SRW_ResourceDrain_Config** file from **.txt** to **.cfg** to enable it).
 
 **[Original KSP forum thread][SRW:original-forum-link]**
 
