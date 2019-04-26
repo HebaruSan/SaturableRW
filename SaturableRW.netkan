@@ -10,7 +10,7 @@
     "release_status" : "stable",
     "install" : [
         {
-            "file"       : "GameData/SaturableRW",
+            "find"       : "SaturableRW",
             "install_to" : "GameData"
         }
     ]
