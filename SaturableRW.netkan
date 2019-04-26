@@ -6,8 +6,7 @@
     "name"           : "Semi-Saturable Reaction Wheels",
     "identifier"     : "SaturableRW",
     "abstract"       : "Saturable Reaction Wheels makes stock reaction wheels more realistic by adding momentum management.",
-	"author"     	 : ["PhineasFreak", "Crzyrndm"],
-    "license"        : "GNU",
+    "author"         : ["PhineasFreak", "Crzyrndm"],
     "release_status" : "stable",
     "install" : [
         {
